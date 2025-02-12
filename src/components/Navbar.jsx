@@ -19,7 +19,6 @@ const NavLink = ({ href, children, onClick }) => {
         behavior: 'smooth'
       });
 
-      // Close the mobile menu after clicking
       if (onClick) onClick();
     }
   };
@@ -64,7 +63,6 @@ const Navbar = () => {
     >
       <div className="text-2xl text-primary-100 font-semibold">Logo</div>
 
-      {/* Desktop Navigation */}
       <div className="hidden md:flex space-x-6">
         <NavLink href="#home">Home</NavLink>
         <NavLink href="#about-us">About</NavLink>
@@ -77,14 +75,12 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Toggle */}
       <div className="md:hidden" ref={menuRef}>
         <button onClick={() => setIsOpen(!isOpen)}>
           <img src={isOpen ? images.cross : images.burgerMenu} height={24} width={24} alt="Menu Icon" />
         </button>
       </div>
 
-      {/* Mobile Navigation Menu */}
       {isOpen && (
         <motion.div
           ref={menuRef}
