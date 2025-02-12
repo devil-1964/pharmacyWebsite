@@ -7,7 +7,7 @@ const NavLink = ({ href, children, onClick }) => {
     e.preventDefault();
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
-    
+
     if (element) {
       const navbar = document.querySelector('nav');
       const navbarHeight = navbar ? navbar.offsetHeight : 0;
@@ -18,7 +18,9 @@ const NavLink = ({ href, children, onClick }) => {
         top: offsetPosition,
         behavior: 'smooth'
       });
-      onClick && onClick();
+
+      // Close the mobile menu after clicking
+      if (onClick) onClick();
     }
   };
 
@@ -61,7 +63,8 @@ const Navbar = () => {
       className="sticky top-0 shadow-md z-50 bg-white w-full font-bold px-6 py-4 flex justify-between items-center"
     >
       <div className="text-2xl text-primary-100 font-semibold">Logo</div>
-      
+
+      {/* Desktop Navigation */}
       <div className="hidden md:flex space-x-6">
         <NavLink href="#home">Home</NavLink>
         <NavLink href="#about-us">About</NavLink>
@@ -69,19 +72,22 @@ const Navbar = () => {
         <NavLink href="#career">Career</NavLink>
         <NavLink href="#contact">Contact</NavLink>
         <div className="flex gap-2 items-center cursor-pointer group">
-          <img className='group-hover:animate-spin' src={images.globe} height={20} width={20} alt="Globe Icon" />
+          <img className="group-hover:animate-spin" src={images.globe} height={20} width={20} alt="Globe Icon" />
           <span>India</span>
         </div>
       </div>
-      
+
+      {/* Mobile Navigation Toggle */}
       <div className="md:hidden" ref={menuRef}>
         <button onClick={() => setIsOpen(!isOpen)}>
           <img src={isOpen ? images.cross : images.burgerMenu} height={24} width={24} alt="Menu Icon" />
         </button>
       </div>
-      
+
+      {/* Mobile Navigation Menu */}
       {isOpen && (
         <motion.div
+          ref={menuRef}
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
