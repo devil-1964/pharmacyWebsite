@@ -18,6 +18,9 @@
 @import "tailwindcss";
 
 
+*{
+    scroll-behavior: smooth;
+}
 html,body{
     font-family: "Comfortaa", serif;
   }

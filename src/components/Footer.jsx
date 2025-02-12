@@ -46,7 +46,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="w-full">
+        <footer id="contact" className="w-full">
             <div className="bg-black text-white py-3 px-4 md:px-14">
                 <div className="container mx-auto flex flex-wrap justify-between items-center gap-4">
                     <div className="text-3xl font-light">Logo</div>
@@ -94,7 +94,7 @@ const Footer = () => {
                             <a
                                 key={link}
                                 href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
-                                className="block w-fit font-bold hover:translate-x-2 transition-transform"
+                                className="block w-fit font-bold hover:translate-x-2 hover:text-primary-100 transition-transform"
                             >
                                 {link}
                             </a>
